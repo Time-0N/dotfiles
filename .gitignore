@@ -1,0 +1,18 @@
+# Sensitive data
+**/secrets*
+**/*secret*
+**/*password*
+**/*token*
+**/.env
+**/credentials*
+
+# Cache
+**/*cache*/
+**/*Cache*/
+**/logs/
+**/*.log
+
+# Private keys
+**/*.pem
+**/*.key
+**/id_rsa*
