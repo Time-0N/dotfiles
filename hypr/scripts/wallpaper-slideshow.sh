@@ -1,19 +1,19 @@
 #!/bin/bash
 
-WALLPAPER_DIR="/home/timeon/Pictures/Wallpaper/slideshow"
+WALLPAPER_DIR="$HOME/Pictures/Wallpaper/slideshow"
 INTERVAL=600
 LOCKFILE="/tmp/wallpaper-slideshow.lock"
 
 # Check if already running
 if [ -f "$LOCKFILE" ]; then
-    # Check if the PID in lockfile is still running
-    if ps -p "$(cat "$LOCKFILE")" > /dev/null 2>&1; then
-        exit 0
-    fi
+  # Check if the PID in lockfile is still running
+  if ps -p "$(cat "$LOCKFILE")" >/dev/null 2>&1; then
+    exit 0
+  fi
 fi
 
 # Create lockfile with current PID
-echo $$ > "$LOCKFILE"
+echo $$ >"$LOCKFILE"
 
 # Cleanup lockfile on exit
 trap "rm -f $LOCKFILE" EXIT
@@ -24,7 +24,7 @@ sleep 3
 # Get all wallpapers
 WALLPAPERS=()
 while IFS= read -r -d '' file; do
-    WALLPAPERS+=("$file")
+  WALLPAPERS+=("$file")
 done < <(find "$WALLPAPER_DIR" -type f \( -iname "*.jpg" -o -iname "*.jpeg" -o -iname "*.png" -o -iname "*.webp" \) -print0)
 
 # Exit if no wallpapers found
@@ -32,21 +32,21 @@ done < <(find "$WALLPAPER_DIR" -type f \( -iname "*.jpg" -o -iname "*.jpeg" -o -
 
 # Shuffle function using shuf
 get_random_wallpaper() {
-    printf '%s\n' "${WALLPAPERS[@]}" | shuf -n 1
+  printf '%s\n' "${WALLPAPERS[@]}" | shuf -n 1
 }
 
 # Apply wallpaper to all monitors
 set_wallpaper() {
-    local img="$1"
-    local transition="$2"
-    
-    # Apply to all monitors at once
-    swww img "$img" \
-        --transition-type "$transition" \
-        --transition-fps 120 \
-        --transition-duration 1 \
-        --resize crop \
-        --filter CatmullRom
+  local img="$1"
+  local transition="$2"
+
+  # Apply to all monitors at once
+  swww img "$img" \
+    --transition-type "$transition" \
+    --transition-fps 120 \
+    --transition-duration 1 \
+    --resize crop \
+    --filter CatmullRom
 }
 
 # Set initial wallpaper with no transition
@@ -55,14 +55,14 @@ set_wallpaper "$CURRENT" "simple"
 
 # Loop forever
 while true; do
-    sleep "$INTERVAL"
-    
-    # Get new random wallpaper (different from current if possible)
+  sleep "$INTERVAL"
+
+  # Get new random wallpaper (different from current if possible)
+  NEXT=$(get_random_wallpaper)
+  while [ "$NEXT" = "$CURRENT" ] && [ ${#WALLPAPERS[@]} -gt 1 ]; do
     NEXT=$(get_random_wallpaper)
-    while [ "$NEXT" = "$CURRENT" ] && [ ${#WALLPAPERS[@]} -gt 1 ]; do
-        NEXT=$(get_random_wallpaper)
-    done
-    
-    set_wallpaper "$NEXT" "wipe"
-    CURRENT="$NEXT"
+  done
+
+  set_wallpaper "$NEXT" "wipe"
+  CURRENT="$NEXT"
 done

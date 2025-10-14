@@ -1,6 +1,6 @@
 # Dotfiles
 
-My personal Hyprland configuration for Arch Linux with a glassy, modern aesthetic.
+My personal Hyprland configuration.
 
 ## Preview
 
@@ -8,9 +8,9 @@ My personal Hyprland configuration for Arch Linux with a glassy, modern aestheti
 - **Terminal**: Kitty with transparency
 - **Shell**: Zsh
 - **Bar**: Waybar
-- **Browser**: Zen Browser
+- **Browser**: Zen Browser (small window rule included)
 - **Editor**: Neovim (LazyVim)
-- **Theme**: WhiteSur Kvantum with glassmorphism
+- **Theme**: WhiteSur Kvantum
 - **Lock Screen**: swaylock-effects
 - **Screenshots**: grim + slurp + satty
 
@@ -19,14 +19,14 @@ My personal Hyprland configuration for Arch Linux with a glassy, modern aestheti
 ```bash
 git clone https://github.com/yourusername/dotfiles.git ~/dotfiles
 cd ~/dotfiles
-./bootstrap.sh
+./setup.sh
 ```
 
-The bootstrap script will:
+The setup script will:
 - Install all necessary packages (pacman + AUR)
 - Backup your existing configs
 - Copy dotfiles to `~/.config`
-- Set up Fish shell
+- Set up Zsh shell
 - Configure Qt themes
 
 ## Manual Install
@@ -66,10 +66,10 @@ chmod +x ~/.config/hypr/scripts/*.sh
 chmod +x ~/.config/waybar/scripts/*.sh
 ```
 
-### 4. Set Fish as Default Shell
+### 4. Set Zsh as Default Shell
 
 ```bash
-chsh -s $(which fish)
+chsh -s $(which zsh)
 ```
 
 ## Configuration Structure
@@ -102,13 +102,6 @@ dotfiles/
     └── lua/config/
 ```
 
-## Key Features
-
-### Glassmorphism Theme
-- Transparent terminals and windows with blur
-- WhiteSur Kvantum theme for Qt apps
-- Dynamic opacity (focused windows are opaque, unfocused are glassy)
-
 ### Keybindings
 
 **Main modifier:** `SUPER` (Windows key)
@@ -119,15 +112,14 @@ dotfiles/
 | `SUPER + Q` | Close window |
 | `SUPER + SHIFT + S` | Screenshot (region with Satty) |
 | `SUPER + L` | Lock screen |
-| `SUPER + M` | Exit Hyprland |
+| `SUPER + SHIFT + M` | Exit Hyprland |
 | `SUPER + V` | Toggle floating |
 | `SUPER + F` | Toggle fullscreen |
+| `SUPER + SHIFT + B` | Reload Waybar |
 
 ### Window Rules
 
 - **Zen Browser**: Transparent when unfocused, opaque when focused
-- **Kitty**: 85% opacity with blur
-- **Floating windows**: Centered with rounded corners
 
 ### Scripts
 
@@ -153,9 +145,8 @@ kvantummanager  # Select "WhiteSur" theme
 
 ### 2. Set Wallpaper
 
-Place your wallpaper in `~/Pictures/wallpaper.jpg` or update the path in:
-- `~/.config/hypr/hyprland.conf`
-- `~/.config/swaylock/config`
+Place your wallpapers in `~/Pictures/Wallpaper/slideshow/` or update the path in:
+- hypr/scripts/wallpaper-slideshow.sh
 
 ### 3. Configure Neovim
 
@@ -193,6 +184,7 @@ Edit `~/.config/waybar/modules.json` to add/remove modules.
 killall waybar
 ~/.config/hypr/scripts/waybar-launch.sh
 ```
+or use the shortcut `SUPER + SHIFT + B` to reload waybar
 
 **Zen Browser not transparent:**
 ```bash
@@ -214,3 +206,4 @@ chmod +x ~/.config/waybar/scripts/*.sh
 ## License
 
 Feel free to use and modify as you like!
+And I use Arch btw. ;)
