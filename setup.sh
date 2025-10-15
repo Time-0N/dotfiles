@@ -43,7 +43,10 @@ install_packages() {
     qt6ct \
     zsh \
     hypridle \
-    hyprlock
+    hyprlock \
+    swww \
+    nm-connection-editor \
+    waybar
 
   echo -e "${GREEN}✓ Core packages installed${NC}\n"
 }
@@ -66,7 +69,10 @@ install_aur() {
   yay -S --needed --noconfirm \
     zen-browser-bin \
     grimblast-git \
-    swappy
+    swappy \
+    wlogout \
+    otf-codenewroman-nerd \
+    swaylock-effects
 
   echo -e "${GREEN}✓ AUR packages installed${NC}\n"
 }
@@ -111,16 +117,16 @@ copy_dotfiles() {
   echo -e "${GREEN}✓ Dotfiles copied${NC}\n"
 }
 
-# Function to set Fish as default shell
-setup_fish() {
-  echo -e "${YELLOW}Setting up Fish shell...${NC}"
+# Function to set Zsh as default shell
+setup_zsh() {
+  echo -e "${YELLOW}Setting up Zsh shell...${NC}"
 
-  if [ "$SHELL" != "$(which fish)" ]; then
-    echo -e "${YELLOW}Changing default shell to Fish...${NC}"
-    chsh -s $(which fish)
-    echo -e "${GREEN}✓ Fish set as default shell (restart required)${NC}\n"
+  if [ "$SHELL" != "$(which zsh)" ]; then
+    echo -e "${YELLOW}Changing default shell to Zsh...${NC}"
+    chsh -s $(which zsh)
+    echo -e "${GREEN}✓ Zsh set as default shell (restart required)${NC}\n"
   else
-    echo -e "${GREEN}✓ Fish already default shell${NC}\n"
+    echo -e "${GREEN}✓ Zsh already default shell${NC}\n"
   fi
 }
 
@@ -159,7 +165,7 @@ main() {
   install_aur
   backup_configs
   copy_dotfiles
-  setup_fish
+  setup_zsh
   setup_qt
 
   echo -e "${GREEN}=== Bootstrap Complete! ===${NC}"
