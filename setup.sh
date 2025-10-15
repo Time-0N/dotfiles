@@ -46,7 +46,9 @@ install_packages() {
     hyprlock \
     swww \
     nm-connection-editor \
-    waybar
+    waybar \
+    cava \
+    playerctl
 
   echo -e "${GREEN}✓ Core packages installed${NC}\n"
 }
