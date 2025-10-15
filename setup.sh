@@ -48,7 +48,8 @@ install_packages() {
     nm-connection-editor \
     waybar \
     cava \
-    playerctl
+    playerctl \
+    ttf-jetbrains-mono-nerd
 
   echo -e "${GREEN}✓ Core packages installed${NC}\n"
 }
