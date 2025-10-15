@@ -179,6 +179,8 @@ Edit `~/.config/waybar/modules.json` to add/remove modules.
 
 ## Troubleshooting
 
+--
+
 **Waybar not showing:**
 ```bash
 killall waybar
@@ -186,15 +188,29 @@ killall waybar
 ```
 or use the shortcut `SUPER + SHIFT + B` to reload waybar
 
+--
+
 **Zen Browser not transparent:**
 ```bash
 hyprctl clients | grep -i zen  # Check window class
+
+--
 ```
 
 **Scripts not executing:**
 ```bash
 chmod +x ~/.config/hypr/scripts/*.sh
 chmod +x ~/.config/waybar/scripts/*.sh
+
+--
+
+Some modules (like CAVA) require proper UTF-8 locale support. If you see broken Unicode characters:
+
+1. Edit `/etc/locale.gen` and uncomment your locale (e.g., `en_US.UTF-8 UTF-8`)
+2. Run `sudo locale-gen`
+3. Reload Waybar # SUPER + SHIFT + B
+
+--
 
 ## Credits
 
