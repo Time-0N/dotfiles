@@ -76,7 +76,7 @@ install_aur() {
     swappy \
     wlogout \
     otf-codenewroman-nerd \
-    swaylock-effects
+    swaylock-fancy
 
   echo -e "${GREEN}✓ AUR packages installed${NC}\n"
 }
