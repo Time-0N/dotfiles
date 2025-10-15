@@ -10,6 +10,7 @@ My personal Hyprland configuration.
 - **Bar**: Waybar
 - **Browser**: Zen Browser (small window rule included)
 - **Editor**: Neovim (LazyVim)
+- **App Launcher**: Walker
 - **Theme**: WhiteSur Kvantum
 - **Lock Screen**: swaylock-effects
 - **Screenshots**: grim + slurp + satty
@@ -27,6 +28,7 @@ The setup script will:
 - Backup your existing configs
 - Copy dotfiles to `~/.config`
 - Set up Zsh shell
+- Set up Walker
 - Configure Qt themes
 
 ## Manual Install
@@ -57,6 +59,7 @@ cp -r ~/dotfiles/swaylock ~/.config/
 cp -r ~/dotfiles/Kvantum ~/.config/
 cp -r ~/dotfiles/cava ~/.config/
 cp -r ~/dotfiles/nvim ~/.config/
+cp -r ~/dotfiles/walker ~/.config/
 ```
 
 ### 3. Make Scripts Executable
@@ -76,30 +79,40 @@ chsh -s $(which zsh)
 
 ```
 dotfiles/
-├── hypr/              # Hyprland config
-│   ├── hyprland.conf  # Main config
-│   ├── config/        # Split configs
-│   │   ├── animations.conf
-│   │   ├── windowrules.conf
-│   │   └── environment.conf
-│   └── scripts/       # Utility scripts
-├── kitty/             # Terminal config
-│   └── kitty.conf
-├── waybar/            # Status bar
-│   ├── config
-│   ├── style.css
-│   ├── colors.css
-│   ├── modules.json
-│   └── scripts/
-├── swaylock/          # Lock screen
-│   └── config
-├── Kvantum/           # Qt theming
-│   └── WhiteSur/
-├── cava/              # Audio visualizer
-│   ├── themes/
-│   └── shaders/
-└── nvim/              # Neovim (LazyVim)
-    └── lua/config/
+├── cava
+│   ├── shaders
+│   └── themes
+├── hypr
+│   ├── config
+│   ├── hyprland.conf
+│   └── scripts
+├── kitty
+│   └── kitty.conf
+├── Kvantum
+│   ├── kvantum.kvconfig
+│   ├── Orchis
+│   └── WhiteSur
+├── nvim
+│   ├── init.lua
+│   ├── lazy-lock.json
+│   ├── lazyvim.json
+│   ├── LICENSE
+│   ├── lua
+│   ├── README.md
+│   └── stylua.toml
+├── README.md
+├── setup.sh
+├── swaylock
+│   └── config
+├── walker
+│   ├── config.toml
+│   └── themes
+└── waybar
+    ├── colors.css
+    ├── config
+    ├── modules.json
+    ├── scripts
+    └── style.css
 ```
 
 ### Keybindings
@@ -112,7 +125,7 @@ dotfiles/
 | `SUPER + Q` | Close window |
 | `SUPER + SHIFT + S` | Screenshot (region with Satty) |
 | `SUPER + L` | Lock screen |
-| `SUPER + SHIFT + M` | Exit Hyprland |
+| `SUPER + SHIFT + M` | Open wlogout |
 | `SUPER + V` | Toggle floating |
 | `SUPER + F` | Toggle fullscreen |
 | `SUPER + SHIFT + B` | Reload Waybar |
@@ -120,6 +133,7 @@ dotfiles/
 ### Window Rules
 
 - **Zen Browser**: Transparent when unfocused, opaque when focused
+- **Walker**: Blur effect
 
 ### Scripts
 

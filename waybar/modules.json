@@ -18,10 +18,10 @@
   "network": {
     "format": "{ifname}",
     "format-wifi": "{icon} {essid}",
-    "format-ethernet": "  {ifname}",
+    "format-ethernet": " {ifname}",
     "format-disconnected": "Disconnected ⚠",
     "format-icons": ["󰤯", "󰤟", "󰤢", "󰤥", "󰤨"],
-    "tooltip-format": " {ifname} via {gwaddri}",
+    "tooltip-format": " {ifname} via {gwaddri}",
     "tooltip-format-wifi": "  {ifname} @ {essid}\nIP: {ipaddr}\nStrength: {signalStrength}%\nFreq: {frequency}MHz\nUp: {bandwidthUpBits} Down: {bandwidthDownBits}",
     "tooltip-format-ethernet": " {ifname}\nIP: {ipaddr}\n up: {bandwidthUpBits} down: {bandwidthDownBits}",
     "tooltip-format-disconnected": "Disconnected",
