@@ -78,7 +78,8 @@ install_aur() {
     otf-codenewroman-nerd \
     swaylock-fancy \
     walker \
-    uwsm
+    uwsm \
+    otf-geist-mono-nerd
 
   echo -e "${GREEN}✓ AUR packages installed${NC}\n"
 }

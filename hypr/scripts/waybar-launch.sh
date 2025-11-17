@@ -8,6 +8,13 @@
 # by Timeon Haas (2025)
 # --------------------------------------------------------------------------------------------
 
-killall waybar
+killall -q waybar
+while pgrep -x waybar >/dev/null; do sleep 0.1; done
+
+until wpctl status &>/dev/null; do
+  sleep 0.2
+done
+
+sleep 0.5
 
 waybar &

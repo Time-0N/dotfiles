@@ -17,8 +17,8 @@
   // Network Module
   "network": {
     "format": "{ifname}",
-    "format-wifi": "{icon} {essid}",
-    "format-ethernet": " {ifname}",
+    "format-wifi": "{icon}",
+    "format-ethernet": " ",
     "format-disconnected": "Disconnected ⚠",
     "format-icons": ["󰤯", "󰤟", "󰤢", "󰤥", "󰤨"],
     "tooltip-format": " {ifname} via {gwaddri}",
@@ -40,7 +40,7 @@
   "memory": {
     "interval": 5,
     "format": " {percentage}%",
-    "tooltip-format": "RAM {used} MiB / {total} MiB • SWAP {swapUsed}/{swapTotal} MiB",
+    "tooltip-format": "RAM {used} MiB / {total} GiB • SWAP {swapUsed}/{swapTotal} GiB",
     "states": { "warning": 70, "critical": 90 }
   },
 
@@ -63,7 +63,6 @@
     "on-scroll-up": "wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+",
     "on-scroll-down": "wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-"
   },
-
   // Microphone (input) Module
   "wireplumber#mic": {
     "node-type": "Audio/Source",
@@ -94,7 +93,6 @@
   "exec": "~/.config/waybar/scripts/os_logo.sh",
   "return-type": "json",
   "format": "{}",
-  "interval": 3600
   },
 
   // Backlight Module (best for laptops)
@@ -104,7 +102,7 @@
   //  "on-scroll-up": "brightnessctl set 5%+",
   //  "on-scroll-down": "brightnessctl set 5%-",
   //  "on-click": "brightnessctl set 50%"
-  //}
+  //},
 
   // System Tray Module
   "tray": {
@@ -116,17 +114,17 @@
   },
 
   // Custom Update Module
-  "custom/updates": {
-  "format": "{}",
-    "return-type": "json",
-    "escape": true,
-    "tooltip": true,
-    "exec": "~/.config/waybar/scripts/check_updates.sh",
-    "interval": 1800,
-    "signal": 1,
-    "hide-empty-text": true,
-    "on-click": "~/.config/waybar/scripts/update_system.sh"
-  },
+  //  "custom/updates": {
+  //  "format": "{}",
+  //    "return-type": "json",
+  //    "escape": true,
+  //    "tooltip": true,
+  //    "exec": "~/.config/waybar/scripts/check_updates.sh",
+  //    "interval": 1800,
+  //    "signal": 1,
+  //    "hide-empty-text": true,
+  //    "on-click": "~/.config/waybar/scripts/update_system.sh"
+  //  },
 
   // Custom CAVA Aduio Visualizer Module
   "custom/cava": {
