@@ -5,20 +5,19 @@ My personal Hyprland configuration.
 ## Preview
 
 - **WM**: Hyprland
-- **Terminal**: Kitty with transparency
+- **Terminal**: Kitty
 - **Shell**: Zsh
 - **Bar**: Waybar
-- **Browser**: Zen Browser (small window rule included)
 - **Editor**: Neovim (LazyVim)
-- **App Launcher**: Walker
-- **Theme**: WhiteSur Kvantum
+- **App Launcher**: Walker (blur config included)
+- **Theme**: MateriaDark Kvantum
 - **Lock Screen**: swaylock-effects
 - **Screenshots**: grim + slurp + satty
 
 ## Quick Install
 
 ```bash
-git clone https://github.com/yourusername/dotfiles.git ~/dotfiles
+git clone https://github.com/Time-0N/dotfiles.git ~/dotfiles
 cd ~/dotfiles
 ./setup.sh
 ```
