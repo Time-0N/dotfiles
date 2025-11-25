@@ -77,8 +77,7 @@ install_aur() {
     wlogout \
     otf-codenewroman-nerd \
     swaylock-fancy \
-    walker \
-    uwsm \
+    hypr-bucket \
     otf-geist-mono-nerd \
     eww
 
@@ -152,21 +151,6 @@ setup_qt() {
   echo -e "${GREEN}✓ Qt configuration added${NC}\n"
 }
 
-# Function to setup Walker
-setup_walker() {
-  # Enable and start elephant service
-  echo "Setting up elephant service..."
-  elephant service enable
-  systemctl --user start elephant.service
-
-  # Verify it's running
-  if systemctl --user is-active --quiet elephant.service; then
-    echo "✓ Elephant service started successfully"
-  else
-    echo "✗ Failed to start elephant service"
-  fi
-}
-
 # Main execution
 main() {
   echo -e "${YELLOW}This script will:${NC}"
@@ -190,7 +174,6 @@ main() {
   copy_dotfiles
   setup_zsh
   setup_qt
-  setup_walker
 
   echo -e "${GREEN}=== Bootstrap Complete! ===${NC}"
   echo -e "${YELLOW}Next steps:${NC}"
