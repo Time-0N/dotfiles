@@ -6,7 +6,7 @@
 
 * {
   all: unset;
-  font-size:15px;
+  font-size: 15px;
   font-family: "CodeNewRoman Nerd Font Propo";
 }
 
@@ -26,7 +26,7 @@ scrollbar {
   box-shadow:
     0 19px 38px rgba(0, 0, 0, 0.3),
     0 15px 12px rgba(0, 0, 0, 0.22);
-  background: alpha(@window_bg_color,.6);
+  background: alpha(@window_bg_color, .6);
   padding: 20px;
   border-radius: 20px;
   border: 1px solid darker(@accent_bg_color);
@@ -38,8 +38,7 @@ scrollbar {
   color: @theme_fg_color;
 }
 
-.box {
-}
+.box {}
 
 .search-container {
   border-radius: 10px;
@@ -56,24 +55,19 @@ scrollbar {
 }
 
 .input:focus,
-.input:active {
-}
+.input:active {}
 
-.content-container {
-}
+.content-container {}
 
-.placeholder {
-}
+.placeholder {}
 
-.scroll {
-}
+.scroll {}
 
 .list {
   color: @theme_fg_color;
 }
 
-child {
-}
+child {}
 
 .item-box {
   border-radius: 10px;
@@ -92,11 +86,9 @@ child:selected .item-box {
   background: alpha(@accent_bg_color, 0.25);
 }
 
-.item-text-box {
-}
+.item-text-box {}
 
-.item-text {
-}
+.item-text {}
 
 .item-subtext {
   font-size: 12px;
@@ -123,8 +115,7 @@ child:selected .item-box {
   font-size: 24px;
 }
 
-.calc .item-subtext {
-}
+.calc .item-subtext {}
 
 .symbols .item-image {
   font-size: 24px;
@@ -157,11 +148,9 @@ child:selected .item-box {
   color: @theme_fg_color;
 }
 
-.keybinds {
-}
+.keybinds {}
 
-.keybind {
-}
+.keybind {}
 
 .keybind-bind {
   /* color: lighter(@window_bg_color); */
@@ -169,8 +158,7 @@ child:selected .item-box {
   text-transform: lowercase;
 }
 
-.keybind-label {
-}
+.keybind-label {}
 
 .error {
   padding: 10px;
