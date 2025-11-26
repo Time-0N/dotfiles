@@ -79,7 +79,8 @@ install_aur() {
     swaylock-fancy \
     hypr-bucket \
     otf-geist-mono-nerd \
-    eww
+    eww \
+    xdg-desktop-portal-hyprland
 
   echo -e "${GREEN}✓ AUR packages installed${NC}\n"
 }
