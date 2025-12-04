@@ -31,7 +31,8 @@ install_packages() {
     hyprland \
     kitty \
     waybar \
-    swaylock-effects \
+    pipewire \
+    wireplumber \
     cava \
     neovim \
     kvantum \
