@@ -31,7 +31,6 @@ install_packages() {
     hyprland \
     kitty \
     waybar \
-    swaylock-effects \
     cava \
     neovim \
     kvantum \
@@ -76,7 +75,6 @@ install_aur() {
     swappy \
     wlogout \
     otf-codenewroman-nerd \
-    swaylock-fancy \
     hypr-bucket \
     otf-geist-mono-nerd \
     eww
@@ -94,7 +92,6 @@ backup_configs() {
   [ -d "$CONFIG_DIR/hypr" ] && cp -r "$CONFIG_DIR/hypr" "$BACKUP_DIR/"
   [ -d "$CONFIG_DIR/kitty" ] && cp -r "$CONFIG_DIR/kitty" "$BACKUP_DIR/"
   [ -d "$CONFIG_DIR/waybar" ] && cp -r "$CONFIG_DIR/waybar" "$BACKUP_DIR/"
-  [ -d "$CONFIG_DIR/swaylock" ] && cp -r "$CONFIG_DIR/swaylock" "$BACKUP_DIR/"
   [ -d "$CONFIG_DIR/Kvantum" ] && cp -r "$CONFIG_DIR/Kvantum" "$BACKUP_DIR/"
   [ -d "$CONFIG_DIR/cava" ] && cp -r "$CONFIG_DIR/cava" "$BACKUP_DIR/"
   [ -d "$CONFIG_DIR/nvim" ] && cp -r "$CONFIG_DIR/nvim" "$BACKUP_DIR/"
@@ -112,7 +109,6 @@ copy_dotfiles() {
   cp -r "$DOTFILES_DIR/hypr" "$CONFIG_DIR/"
   cp -r "$DOTFILES_DIR/kitty" "$CONFIG_DIR/"
   cp -r "$DOTFILES_DIR/waybar" "$CONFIG_DIR/"
-  cp -r "$DOTFILES_DIR/swaylock" "$CONFIG_DIR/"
   cp -r "$DOTFILES_DIR/Kvantum" "$CONFIG_DIR/"
   cp -r "$DOTFILES_DIR/cava" "$CONFIG_DIR/"
   cp -r "$DOTFILES_DIR/nvim" "$CONFIG_DIR/"

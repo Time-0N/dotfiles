@@ -1,6 +1,6 @@
 # Dotfiles
 
-My personal Hyprland configuration.
+My personal Hyprland configuration for an Arch-based setup.
 
 ## Preview
 
@@ -8,13 +8,14 @@ My personal Hyprland configuration.
 - **Terminal**: Kitty
 - **Shell**: Zsh
 - **Bar**: Waybar
+- **Widgets**: Eww
 - **Editor**: Neovim (LazyVim)
-- **App Launcher**: Walker (blur config included)
-- **Theme**: MateriaDark Kvantum
-- **Lock Screen**: swaylock-effects
-- **Screenshots**: grim + slurp + satty
+- **Theme (Qt)**: Kvantum (MateriaDark / WhiteSur in this repo)
+- **Lock screen**: swaylock config included (Hypridle/Hyprlock supported)
+- **Screenshots**: grim + slurp + satty (plus grimblast/swappy if installed)
+- **Browser**: Zen (AUR)
 
-## Quick Install
+## Quick setup
 
 ```bash
 git clone https://github.com/Time-0N/dotfiles.git ~/dotfiles
@@ -23,32 +24,40 @@ cd ~/dotfiles
 ```
 
 The setup script will:
-- Install all necessary packages (pacman + AUR)
-- Backup your existing configs
-- Copy dotfiles to `~/.config`
-- Set up Zsh shell
-- Set up Walker
-- Configure Qt themes
 
-## Manual Install
+- Install packages (pacman + AUR)
+- Backup existing configs
+- Copy tracked configs into `~/.config`
+- Set up Zsh as the default shell
+- Add basic Qt theming environment variables for Hyprland
 
-If you prefer manual installation:
+Notes:
 
-### 1. Install Dependencies
+- This repo is intended for **Arch-based distros**.
+- Qt theming is handled via **qt6ct/qt5ct + Kvantum**.
 
-**Core packages:**
+## Manual setup
+
+### 1) Install dependencies
+
+**Core packages (pacman):**
+
 ```bash
-sudo pacman -S hyprland kitty waybar swaylock-effects cava neovim \
-               kvantum grim slurp satty wl-clipboard qt5ct qt6ct \
-               fish hypridle hyprlock
+sudo pacman -S --needed \
+  hyprland kitty waybar cava neovim kvantum \
+  grim slurp satty wl-clipboard qt5ct qt6ct \
+  zsh hypridle hyprlock swww playerctl \
+  nm-connection-editor ttf-jetbrains-mono-nerd
 ```
 
-**AUR packages:**
+**AUR packages (yay):**
+
 ```bash
-yay -S zen-browser-bin grimblast-git swappy
+yay -S --needed \
+  zen-browser-bin grimblast-git swappy wlogout eww
 ```
 
-### 2. Copy Configs
+### 2) Copy configs
 
 ```bash
 cp -r ~/dotfiles/hypr ~/.config/
@@ -58,181 +67,155 @@ cp -r ~/dotfiles/swaylock ~/.config/
 cp -r ~/dotfiles/Kvantum ~/.config/
 cp -r ~/dotfiles/cava ~/.config/
 cp -r ~/dotfiles/nvim ~/.config/
-cp -r ~/dotfiles/walker ~/.config/
+cp -r ~/dotfiles/eww ~/.config/
 ```
 
-### 3. Make Scripts Executable
+### 3) Make scripts executable (if present)
 
 ```bash
-chmod +x ~/.config/hypr/scripts/*.sh
-chmod +x ~/.config/waybar/scripts/*.sh
+chmod +x ~/.config/hypr/scripts/*.sh 2>/dev/null || true
+chmod +x ~/.config/waybar/scripts/*.sh 2>/dev/null || true
 ```
 
-### 4. Set Zsh as Default Shell
+### 4) Set Zsh as default shell
 
 ```bash
-chsh -s $(which zsh)
+chsh -s "$(which zsh)"
 ```
 
-## Configuration Structure
+## Keybindings
 
-```
-dotfiles/
-├── cava
-│   ├── shaders
-│   └── themes
-├── hypr
-│   ├── config
-│   ├── hyprland.conf
-│   └── scripts
-├── kitty
-│   └── kitty.conf
-├── Kvantum
-│   ├── kvantum.kvconfig
-│   ├── Orchis
-│   └── WhiteSur
-├── nvim
-│   ├── init.lua
-│   ├── lazy-lock.json
-│   ├── lazyvim.json
-│   ├── LICENSE
-│   ├── lua
-│   ├── README.md
-│   └── stylua.toml
-├── README.md
-├── setup.sh
-├── swaylock
-│   └── config
-├── walker
-│   ├── config.toml
-│   └── themes
-└── waybar
-    ├── colors.css
-    ├── config
-    ├── modules.json
-    ├── scripts
-    └── style.css
-```
+**Main modifier:** `SUPER`
 
-### Keybindings
-
-**Main modifier:** `SUPER` (Windows key)
-
-| Keybind | Action |
-|---------|--------|
-| `SUPER + Return` | Open terminal (Kitty) |
-| `SUPER + Q` | Close window |
+| Keybind             | Action                         |
+| ------------------- | ------------------------------ |
+| `SUPER + Return`    | Open terminal (Kitty)          |
+| `SUPER + Q`         | Close window                   |
 | `SUPER + SHIFT + S` | Screenshot (region with Satty) |
-| `SUPER + L` | Lock screen |
-| `SUPER + SHIFT + M` | Open wlogout |
-| `SUPER + V` | Toggle floating |
-| `SUPER + F` | Toggle fullscreen |
-| `SUPER + SHIFT + B` | Reload Waybar |
+| `SUPER + L`         | Lock screen                    |
+| `SUPER + SHIFT + M` | Open wlogout                   |
+| `SUPER + V`         | Toggle floating                |
+| `SUPER + F`         | Toggle fullscreen              |
+| `SUPER + SHIFT + B` | Reload Waybar                  |
 
-### Window Rules
+## Behavior notes
 
-- **Zen Browser**: Transparent when unfocused, opaque when focused
-- **Walker**: Blur effect
+- **Zen Browser**: configured for transparency (unfocused vs focused)
+- **Launchers / widgets**: Eww is included; any launcher referenced in your Hypr config should be installed separately if it’s not in the package list
 
-### Scripts
+## Scripts
 
-**Hypr scripts:**
-- `wallpaper-slideshow.sh` - Automatic wallpaper rotation
+**Hypr scripts (if present):**
+
+- `wallpaper-slideshow.sh` - automatic wallpaper rotation
 - `waybar-launch.sh` - Waybar startup script
 
-**Waybar scripts:**
-- `cava.sh` - Audio visualizer module
-- `os_logo.sh` - Display OS logo
-- `check_updates.sh` - Check for system updates (WIP)
-- `update_system.sh` - Update system (WIP)
+**Waybar scripts (if present):**
 
-## Post-Install Setup
+- `cava.sh` - audio visualizer module
+- `os_logo.sh` - display OS logo
+- `check_updates.sh` - check for system updates (WIP)
+- `update_system.sh` - update system (WIP)
 
-### 1. Configure Qt Themes
+## Post-install setup
+
+### 1) Configure Qt themes
 
 ```bash
-qt6ct  # Set style to "kvantum"
-qt5ct  # Set style to "kvantum"
-kvantummanager  # Select "WhiteSur" theme
+qt6ct     # set style to "kvantum"
+qt5ct     # set style to "kvantum"
+kvantummanager  # select a theme (e.g. WhiteSur)
 ```
 
-### 2. Set Wallpaper
+### 2) Wallpapers
 
-Place your wallpapers in `~/Pictures/Wallpaper/slideshow/` or update the path in:
-- hypr/scripts/wallpaper-slideshow.sh
+If you use the slideshow script, place wallpapers in your configured directory
+(or update the path in the script / Hypr config).
 
-### 3. Configure Neovim
+### 3) Neovim
 
-First launch will install all plugins automatically via LazyVim.
+First launch will install plugins automatically via LazyVim.
 
 ## Customization
 
-### Change Opacity
+### Opacity
 
-Edit `~/.config/hypr/config/windowrules.conf`:
-```bash
+Edit your Hypr window rules (example):
+
+```conf
 windowrulev2 = opacity 0.95 0.90,class:^(kitty)$
-#                      ^^^^  ^^^^ 
+#                      ^^^^  ^^^^
 #                      active  inactive
 ```
 
-### Change Blur Strength
+### Blur
 
-Edit `~/.config/hypr/hyprland.conf`:
-```bash
+Edit `~/.config/hypr/hyprland.conf` (example):
+
+```conf
 blur {
-    size = 15      # Higher = more blur
-    passes = 5     # More passes = stronger blur
+  size = 15
+  passes = 5
 }
 ```
 
-### Waybar Modules
+### Waybar modules
 
 Edit `~/.config/waybar/modules.json` to add/remove modules.
 
 ## Troubleshooting
 
---
-
 **Waybar not showing:**
+
 ```bash
 killall waybar
 ~/.config/hypr/scripts/waybar-launch.sh
 ```
-or use the shortcut `SUPER + SHIFT + B` to reload waybar
 
---
+or use `SUPER + SHIFT + B`.
 
 **Zen Browser not transparent:**
-```bash
-hyprctl clients | grep -i zen  # Check window class
 
---
+```bash
+hyprctl clients | grep -i zen
 ```
 
 **Scripts not executing:**
+
 ```bash
 chmod +x ~/.config/hypr/scripts/*.sh
 chmod +x ~/.config/waybar/scripts/*.sh
+```
 
---
+**Broken Unicode glyphs:**
 
-Some modules (like CAVA) require proper UTF-8 locale support. If you see broken Unicode characters:
-
-1. Edit `/etc/locale.gen` and uncomment your locale (e.g., `en_US.UTF-8 UTF-8`)
+1. Edit `/etc/locale.gen` and uncomment your locale (e.g. `en_US.UTF-8 UTF-8`)
 2. Run `sudo locale-gen`
-3. Reload Waybar # SUPER + SHIFT + B
+3. Restart Waybar
 
---
+## Sync configs back into the repo (optional, recommended)
+
+If you keep your “live” configs in `~/.config`, create a sync script in the repo
+to copy only the tracked directories back into `~/dotfiles` before committing.
+
+Example workflow:
+
+```bash
+./sync.sh
+git status
+git commit -am "sync configs"
+git push
+```
+
+(If you don’t have a `sync.sh` yet, add one using `rsync` with an explicit allowlist.)
 
 ## Credits
 
 - WhiteSur theme by vinceliuice
 - LazyVim by folke
-- CachyOS
-```
+- Hyprland / Waybar / Kitty and the wider Wayland ecosystem
 
 ## License
 
-Feel free to use and modify as you like!
+Feel free to use and modify as you like.
 And I use Arch btw. ;)
