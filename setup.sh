@@ -49,7 +49,8 @@ install_packages() {
     cava \
     playerctl \
     ttf-jetbrains-mono-nerd \
-    wl-clipboard
+    wl-clipboard \
+    ddcutil
 
   echo -e "${GREEN}✓ Core packages installed${NC}\n"
 }
