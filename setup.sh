@@ -96,6 +96,7 @@ backup_configs() {
   [ -d "$CONFIG_DIR/Kvantum" ] && cp -r "$CONFIG_DIR/Kvantum" "$BACKUP_DIR/"
   [ -d "$CONFIG_DIR/cava" ] && cp -r "$CONFIG_DIR/cava" "$BACKUP_DIR/"
   [ -d "$CONFIG_DIR/nvim" ] && cp -r "$CONFIG_DIR/nvim" "$BACKUP_DIR/"
+  [ -d "$CONFIG_DIR/hyprlock" ] && cp -r "$CONFIG_DIR/hyprlock" "$BACKUP_DIR"
 
   echo -e "${GREEN}✓ Backup created at $BACKUP_DIR${NC}\n"
 }
@@ -113,6 +114,7 @@ copy_dotfiles() {
   cp -r "$DOTFILES_DIR/Kvantum" "$CONFIG_DIR/"
   cp -r "$DOTFILES_DIR/cava" "$CONFIG_DIR/"
   cp -r "$DOTFILES_DIR/nvim" "$CONFIG_DIR/"
+  cp -r "$DOTFILES_DIR/hyprlock" "$CONFIG_DIR/"
 
   # Make all scripts executable
   chmod +x "$CONFIG_DIR/hypr/scripts/"*.sh
