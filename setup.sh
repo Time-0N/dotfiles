@@ -50,7 +50,8 @@ install_packages() {
     playerctl \
     ttf-jetbrains-mono-nerd \
     wl-clipboard \
-    ddcutil
+    ddcutil \
+    nautilus
 
   echo -e "${GREEN}✓ Core packages installed${NC}\n"
 }
