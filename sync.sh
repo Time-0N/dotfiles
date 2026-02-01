@@ -17,6 +17,8 @@ DIRS=(
   hyprlock
   hypridle
   hyprbucket
+  gtk-3.0
+  gtk-4.0
 )
 
 # Exclusions
