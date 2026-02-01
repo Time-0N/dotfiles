@@ -151,14 +151,42 @@ setup_qt() {
   echo -e "${GREEN}✓ Qt configuration added${NC}\n"
 }
 
+# Function to install GRUB theme
+install_grub_theme() {
+  echo -e "${YELLOW}GRUB Theme Configuration${NC}"
+  read -p "Would you like to install the custom GRUB theme? (y/n) " -n 1 -r
+  echo ""
+
+  if [[ $REPLY =~ ^[Yy]$ ]]; then
+    GRUB_SCRIPT="$DOTFILES_DIR/grub/install_script_grub.sh"
+
+    if [ -f "$GRUB_SCRIPT" ]; then
+      echo -e "${YELLOW}Executing GRUB install script...${NC}"
+
+      # Ensure script is executable
+      chmod +x "$GRUB_SCRIPT"
+
+      # Run the script.
+      "$GRUB_SCRIPT"
+
+      echo -e "${GREEN}✓ GRUB theme installed${NC}\n"
+    else
+      echo -e "${RED}Error: GRUB script not found at $GRUB_SCRIPT${NC}\n"
+    fi
+  else
+    echo -e "${YELLOW}Skipping GRUB theme installation.${NC}\n"
+  fi
+}
+
 # Main execution
 main() {
   echo -e "${YELLOW}This script will:${NC}"
   echo "1. Install all necessary packages"
   echo "2. Backup existing configs"
   echo "3. Copy dotfiles to ~/.config"
-  echo "4. Set up Fish shell"
+  echo "4. Set up Zsh shell"
   echo "5. Configure Qt themes"
+  echo "6. Ask for GRUB theme installation"
   echo ""
   read -p "Continue? (y/n) " -n 1 -r
   echo ""
@@ -174,6 +202,7 @@ main() {
   copy_dotfiles
   setup_zsh
   setup_qt
+  install_grub_theme
 
   echo -e "${GREEN}=== Bootstrap Complete! ===${NC}"
   echo -e "${YELLOW}Next steps:${NC}"

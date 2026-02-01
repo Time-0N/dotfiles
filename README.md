@@ -10,8 +10,8 @@ My personal Hyprland configuration for an Arch-based setup.
 - **Bar**: Waybar
 - **Widgets**: Eww
 - **Editor**: Neovim (LazyVim)
-- **Theme (Qt)**: Kvantum (MateriaDark / WhiteSur in this repo)
-- **Lock screen**: swaylock config included (Hypridle/Hyprlock supported)
+- **Theme (Qt)**: Kvantum (MateriaDark)
+- **Lock screen**: Hyprlock
 - **Screenshots**: grim + slurp + satty (plus grimblast/swappy if installed)
 - **Browser**: Zen (AUR)
 
@@ -63,7 +63,7 @@ yay -S --needed \
 cp -r ~/dotfiles/hypr ~/.config/
 cp -r ~/dotfiles/kitty ~/.config/
 cp -r ~/dotfiles/waybar ~/.config/
-cp -r ~/dotfiles/swaylock ~/.config/
+cp -r ~/dotfiles/hyprlock ~/.config/
 cp -r ~/dotfiles/Kvantum ~/.config/
 cp -r ~/dotfiles/cava ~/.config/
 cp -r ~/dotfiles/nvim ~/.config/
@@ -105,12 +105,12 @@ chsh -s "$(which zsh)"
 
 ## Scripts
 
-**Hypr scripts (if present):**
+**Hypr scripts:**
 
 - `wallpaper-slideshow.sh` - automatic wallpaper rotation
 - `waybar-launch.sh` - Waybar startup script
 
-**Waybar scripts (if present):**
+**Waybar scripts:**
 
 - `cava.sh` - audio visualizer module
 - `os_logo.sh` - display OS logo
@@ -124,7 +124,7 @@ chsh -s "$(which zsh)"
 ```bash
 qt6ct     # set style to "kvantum"
 qt5ct     # set style to "kvantum"
-kvantummanager  # select a theme (e.g. WhiteSur)
+kvantummanager  # select a theme (e.g. MateriaDark)
 ```
 
 ### 2) Wallpapers
@@ -211,11 +211,22 @@ git push
 
 ## Credits
 
-- WhiteSur theme by vinceliuice
-- LazyVim by folke
-- Hyprland / Waybar / Kitty and the wider Wayland ecosystem
+- **Materia Theme**: [PapirusDevelopmentTeam](https://github.com/PapirusDevelopmentTeam/materia-kde)
+- **LazyVim**: [folke](https://github.com/LazyVim/LazyVim)
+- **GRUB Theme**: Based on [Patato777's dotfiles](https://github.com/Patato777/dotfiles)
+- **Background Art**: [Valenberg](http://valenberg.com/) (Used in GRUB/Wallpapers via [VirtuaVerse](https://discord.gg/virtuaverse))
+- **General ecosystem**: Hyprland, Waybar, Kitty, and the Arch community.
 
 ## License
 
-Feel free to use and modify as you like.
-And I use Arch btw. ;)
+**My Configurations:**
+Feel free to use, modify, and distribute my personal configuration files as you like.
+
+**External Components:**
+Some parts of this repository are sourced from other projects and retain their original licenses:
+
+- **GRUB Theme**: Sourced from [Patato777/dotfiles](https://github.com/Patato777/dotfiles).
+  - Licensed under the **MIT License**.
+  - See the license file at `grub/LICENSE`.
+- **Artwork**: The pixel art backgrounds are by [Valenberg](http://valenberg.com/).
+  - **Note**: These images are **not** covered by the MIT license. They remain the intellectual property of the artist.
